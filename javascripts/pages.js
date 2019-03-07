@@ -26,7 +26,6 @@ const pages = [
         <div class="empty-flex-1"></div>
     </div>
     <br>
-    <div class="sub-title">Interaction</div>
     <div class="description">
     This type of visualization shows how things are interconnected through the use of nodes / vertices and link lines to represent their connections and help illuminate the type of relationships between a group of entities.
     </div>
@@ -35,6 +34,7 @@ const pages = [
     </div>
     <br>
     <br>
+    <div class="sub-title">Interaction</div>
     <div class="description">
     You can interact with the visualization. <b>Zoom</b> by using the mouse wheel. <b>Pan</b> by pressing the left mouse button down and dragging. <b>Select and deselect</b> nodes as <b>answers</b> by double-clicking on them. <b>Select and deselect</b> node as <b>highlights</b> by clicking on them once. <b>Move</b> nodes by dragging them (sometimes this can be useful to tell where its links go). <b>Mouse-over</b> nodes to highlight them. Here is an example of a selected node as an answer and a highlighted/selected node respectively.
     </div>
