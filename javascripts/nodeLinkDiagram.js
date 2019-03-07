@@ -226,7 +226,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
             });
         drawNodes();
         const elapsedTime = Util.getTimeDiffFrom(startTime);
-        console.log(isHighestValue)
+        console.log(isHighestValue);
         let isCorrect = isHighestValue ?
             userAnswerNode[refCentrality] >= maxCentralityVal : userAnswerNode[refCentrality] <= minCentralityVal;
         console.log(elapsedTime, isCorrect);
@@ -251,6 +251,10 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
             app.$data.user.test['real_test'][taskNum] = {
                 'time': elapsedTime,
                 'correctness': isCorrect,
+                'data_name': dataName,
+                'centrality': refCentrality,
+                'color-map': colorMapName,
+                'is_high': isHighestValue
             };
         }
         return { elapsedTime, isCorrect }

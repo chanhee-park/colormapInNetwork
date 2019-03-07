@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif !important;
 }
 
 body {
@@ -84,7 +85,7 @@ a {
     width: 100px;
     height: 50px;
     line-height: 50px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     text-align: center;
     color: black;
@@ -114,11 +115,10 @@ a {
 }
 
 .start-button {
-    font-size: 24px;
     width: 100px;
     height: 50px;
     line-height: 50px;
-    top: 40%;
+    top: 50%;
     left: calc(50% - 100px);
 }
 

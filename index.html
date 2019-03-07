@@ -12,6 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-selection/1.2.0/d3-selection.min.js"></script>
 <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <div id="app">
     <div class="login-zone">
@@ -29,7 +30,7 @@
             </div>
         </div>
         <div class="button back-page-button" v-if="pageNum>0" v-on:click="backPage">BACK</div>
-        <div class="button next-page-button" v-on:click="nextPage">NEXT</div>
+        <div class="button next-page-button" v-if="pageNum<7" v-on:click="nextPage">NEXT</div>
     </div>
 </div>
 <script src="javascripts/index.js"></script>
