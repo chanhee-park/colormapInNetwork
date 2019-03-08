@@ -35,24 +35,15 @@ const pages = [
     <br>
     <br>
     <div class="sub-title">Interaction</div>
-    <div class="description">
-    You can interact with the visualization. <b>Zoom</b> by using the mouse wheel. <b>Pan</b> by pressing the left mouse button down and dragging. <b>Select and deselect</b> nodes as <b>answers</b> by double-clicking on them. <b>Select and deselect</b> node as <b>highlights</b> by clicking on them once. <b>Move</b> nodes by dragging them (sometimes this can be useful to tell where its links go). <b>Mouse-over</b> nodes to highlight them. Here is an example of a selected node as an answer and a highlighted/selected node respectively.
+    <div class="description">You can interact with the visualization. <b>Select</b> nodes as <b>answers</b> by clicking on them once.
     </div>
-    <div class="description">
-    이 시각화와는 인터랙션을 포함합니다. 마우스 휠을 사용하여 <b>줌</b> 할 수 있습니다. 마우스 왼쪽 버튼을 누른 다음 끌어서 그래프를 <b>이동</b>할 수 있습니다. 노드를 두 번 클릭하여 노드를 <b>응답으로 선택하거나 선택 취소</b>할 수 있습니다. 노드를 한 번 클릭하여 <b>강조 표시하거나 취소</b>할 수 있습니다. 노드를 끌어 노드를 <b>이동</b>할 수 있습니다.노드의 이동은 때로 링크의 위치를 파악하는 데 유용할 수 있습니다. 강조 표시를 위해서 <b>마우스를 올리</b>세요. 다음은 응답으로 강조 표시된 노드와 선택된 노드의 예시입니다.
+    <div class="description">노드를 한 번 클릭하여 노드를 <b>응답으로 선택</b>할 수 있습니다.
     </div>
     <br>
 
     <div class="flex-zone">
-        <div class="empty-flex-1"></div>
         <div class="image-wrapper flex-4">
-            <img id='diagram-img' src="image/eg_select.png" alt="degree_animation" height="150">
-
-        </div>
-        <div class="image-wrapper flex-4">
-             <img id='diagram-img' src="image/eg_highlight.png" alt="degree_animation" height="150">
-        </div>
-        <div class="empty-flex-1"></div>
+            <img id='diagram-img' src="image/eg_select.png" alt="degree_animation" height="200">
     </div>
     <br>
     `
