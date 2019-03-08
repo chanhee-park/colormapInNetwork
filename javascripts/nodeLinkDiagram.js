@@ -33,7 +33,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
         minCentralityVal = undefined,
         maxCentralityVal = undefined;
 
-    let answeredNodes, correctAnswerNode, highlightNode;
+    let answeredNodes, highlightNode;
 
     setAxisInfo();
     drawColorLegend();
@@ -242,8 +242,9 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
 
     function checkAnswerResult(userAnswerNode) {
         if (app.$data.isTaskComplete) {
-            return;
+            d3.selectAll('.correctnessText').remove();
         }
+
         d3.selectAll('.node').remove();
         d3.selectAll('.link').remove();
         const coord = getCoord({ x: userAnswerNode.x, y: userAnswerNode.y });
@@ -253,13 +254,13 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                 cy: coord.y,
                 r: nodeRadius + 5,
                 fill: '#000'
-            });
+            })
+            .classed('node', true);
         drawNodes();
         const elapsedTime = Util.getTimeDiffFrom(startTime);
         let isCorrect = isHighestValue ?
             userAnswerNode[refCentrality] >= maxCentralityVal : userAnswerNode[refCentrality] <= minCentralityVal;
         console.log("result : ", elapsedTime, isCorrect);
-        console.log(dataName, refCentrality, colorMapName, isTutorial, taskNum, isHighestValue);
 
         if (isTutorial) {
             const isCorrectText = isCorrect ? 'CORRECT' : 'WRONG';
@@ -270,7 +271,8 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                     y: svgHeight - 10,
                     'text-anchor': 'start',
                     'alignment-baseline': 'ideographic'
-                });
+                })
+                .classed('correctnessText', true);
             app.$data.user.test['tutorial_test'][taskNum] = {
                 'time': elapsedTime,
                 'correctness': isCorrect,
