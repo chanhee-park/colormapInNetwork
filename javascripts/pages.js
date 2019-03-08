@@ -152,8 +152,8 @@ const pages = [
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
-        <br>You can select nodes as answers by double-clicking on them. A Selected answer will have a black circle around the node. 
-        <br>노드를 두 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+        <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
+        <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
     <div class="render-area">
         <div class="button start-button">Start</div>
