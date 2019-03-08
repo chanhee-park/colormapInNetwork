@@ -179,3 +179,12 @@ circle.node:hover {
 .description b {
     color: #700
 }
+
+text {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
