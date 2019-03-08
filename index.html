@@ -29,7 +29,7 @@
                  v-on:click="blindTest">Complete
             </div>
         </div>
-        <div class="button back-page-button" v-if="pageNum>0" v-on:click="backPage">BACK</div>
+        <div class="button back-page-button" v-if="pageNum>0 && pageNum<6" v-on:click="backPage">BACK</div>
         <div class="button next-page-button" v-if="pageNum<7" v-on:click="nextPage">NEXT</div>
     </div>
 </div>
