@@ -3,6 +3,7 @@ const app = new Vue({
     data: {
         loginButtonLocked: false,
         isSigned: false,
+        isTaskComplete: false,
         user: {
             uid: undefined,
             uname: undefined,
@@ -64,7 +65,10 @@ const app = new Vue({
             clearTimeout(intervalFunc);
             console.log("");
             console.log("Page " + app.$data.pageNum);
-            if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum < 95) {
+            if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false) {
+                alert("Please Answer The Question.");
+                return;
+            } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum < 95) {
                 const isHighValue = Math.floor(Math.random() * 10) < 6;
                 app.$data.pageInfo = {
                     title: "ACTUAL TEST",
@@ -93,12 +97,11 @@ const app = new Vue({
                 app.printUserInfo();
                 app.$data.pageInfo = pages[app.$data.pageNum];
             }
+            $('html').scrollTop(0);
             app.pageInteraction(app.$data.pageInfo.type);
         },
         pageInteraction: (type) => {
-            if (type === 'animation_deg') {
-                app.animation('image/degree/network_diagram-degree_', 10);
-            } else if (type === 'task0') {
+            if (type === 'task0') {
                 console.log('TASK 1/3');
                 app.task('karate', 'deg_log', 'single_greens', true, 0, true);
             } else if (type === 'task1') {
@@ -108,12 +111,11 @@ const app = new Vue({
                 app.task('karate', 'btw', 'plasma', true, 2, false);
                 console.log('TASK 3/3');
             } else if (type === 'actual_test') {
-                const isHighValue = app.$data.pageInfo.isHighValue;
                 const taskNum = app.$data.pageInfo.taskNum;
                 const dName = dataNames[taskNum % 3];
-                console.log(centralityNames);
                 const centralityName = centralityNames[parseInt(taskNum / 3) % 4];
                 const colorMapName = colorMapNames[parseInt(taskNum / 12)];
+                const isHighValue = app.$data.pageInfo.isHighValue;
                 console.log(taskNum);
                 app.task(dName, centralityName, colorMapName, false, taskNum, isHighValue);
             } else if (type === 'save') {
@@ -139,6 +141,7 @@ const app = new Vue({
             alert("You are " + addedText + "color-blind.");
         },
         task: (data, centrality, colormap, isTutorial, taskNum, isHighValue) => {
+            app.$data.isTaskComplete = false;
             $('svg#network').empty();
             $('div.render-area').prepend('<div class="button start-button">Start</div>');
             setTimeout(function () {

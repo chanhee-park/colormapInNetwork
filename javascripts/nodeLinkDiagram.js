@@ -39,7 +39,6 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
     drawColorLegend();
     drawLinks();
     drawNodes();
-    transformDiagram();
 
     function drawHighlightNode() {
         d3.selectAll('.node').remove();
@@ -172,6 +171,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                     answer(node);
                 })
         });
+        transformDiagram();
     }
 
     /**
@@ -241,7 +241,11 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
     }
 
     function checkAnswerResult(userAnswerNode) {
+        if (app.$data.isTaskComplete) {
+            return;
+        }
         d3.selectAll('.node').remove();
+        d3.selectAll('.link').remove();
         const coord = getCoord({ x: userAnswerNode.x, y: userAnswerNode.y });
         svg.append('circle')
             .attrs({
@@ -252,11 +256,9 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
             });
         drawNodes();
         const elapsedTime = Util.getTimeDiffFrom(startTime);
-        console.log(isHighestValue);
         let isCorrect = isHighestValue ?
             userAnswerNode[refCentrality] >= maxCentralityVal : userAnswerNode[refCentrality] <= minCentralityVal;
-        console.log(elapsedTime, isCorrect);
-
+        console.log("result : ", elapsedTime, isCorrect);
         console.log(dataName, refCentrality, colorMapName, isTutorial, taskNum, isHighestValue);
 
         if (isTutorial) {
@@ -283,6 +285,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                 'is_high': isHighestValue
             };
         }
+        app.$data.isTaskComplete = true;
         return { elapsedTime, isCorrect }
     }
 }
