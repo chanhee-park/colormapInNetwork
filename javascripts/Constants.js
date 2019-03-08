@@ -28,11 +28,12 @@ const dataNames = [
 ];
 
 const centralityNames = [
-    "deg", "btw", "cls", "page"
+    "deg_log", "btw", "page", "random"
 ];
 
 const colorMapNames = [
     'single_blue', 'single_greens', 'single_grey', 'inferno',
     'heat', 'plasma', 'viridis', 'brewer_yellow-green-blue'
 ];
-console.log(Constant);
+
+console.log(Constant)

@@ -147,8 +147,8 @@ a {
 }
 
 .render-area {
-    width: 720px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
 }
 
 .render-area > svg#network {

@@ -13,8 +13,8 @@ const app = new Vue({
                 'real_test': [],
             },
         },
-        pageNum: 0,
-        pageInfo: pages[0],
+        pageNum: 2,
+        pageInfo: pages[2],
     },
 
     methods: {

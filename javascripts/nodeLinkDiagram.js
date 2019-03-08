@@ -2,16 +2,24 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
     const startTime = Util.getTime();
     const graph = await $.getJSON('./data/' + dataName + '.json');
     const colorMap = Constant.colorMaps[colorMapName];
+
+    const rotate = Math.random() * 360;
+    const scale = 1 - Math.random() * 0.1;
+    const reflectX = Math.random() > 0.5 ? -1 : 1;
+    const reflectY = Math.random() > 0.5 ? -1 : 1;
+
     isHighestValue = (isHighestValue === undefined) ? true : isHighestValue;
+
+    if (refCentrality === 'random') setRandCentrality();
 
     console.log(taskNum, dataName, refCentrality, colorMapName, isTutorial ? "tutorial" : "not-tutorial", isHighestValue ? "high" : "low");
 
     // Set Render Size
     const svg = d3.select("svg#network"),
-        svgWidth = 720,
-        svgHeight = 600,
-        width = svgHeight * 0.75,
-        height = svgHeight * 0.75;
+        svgWidth = 800,
+        svgHeight = 800,
+        width = svgHeight * 0.7,
+        height = svgHeight * 0.7;
 
     // No Magic Number !
     const nodeRadius = graph.nodes.length < 250 ? 8 - graph.nodes.length / 50 : 3,
@@ -31,6 +39,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
     drawColorLegend();
     drawLinks();
     drawNodes();
+    transformDiagram();
 
     function drawHighlightNode() {
         d3.selectAll('.node').remove();
@@ -47,7 +56,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                     fill: color
                 })
                 .classed('node', true)
-                .on('dblclick', function () {
+                .on('click', function () {
                     answer(node);
                 })
         });
@@ -63,7 +72,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                     fill: color
                 })
                 .classed('node', true)
-                .on('dblclick', function () {
+                .on('click', function () {
                     answer(node);
                 })
         });
@@ -159,7 +168,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                     fill: color
                 })
                 .classed('node', true)
-                .on('dblclick', function () {
+                .on('click', function () {
                     answer(node);
                 })
         });
@@ -187,6 +196,16 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
         });
     }
 
+
+    function transformDiagram() {
+        d3.selectAll('circle')
+            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+
+        d3.selectAll('line')
+            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+    }
+
+
     /**
      * 'pos' is the coordinate with center point (0,0).
      * Returns the top-left point to be (0,0).
@@ -207,7 +226,14 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
      */
     function getHexColor(centrality) {
         const relativeVal = Util.getRelativeVal(centrality, minCentralityVal, maxCentralityVal);
-        return colorMap(relativeVal);
+        const nonZeroVal = (relativeVal + 0.2) / 1.2;
+        return colorMap(nonZeroVal);
+    }
+
+    function setRandCentrality() {
+        _.forEach(graph.nodes, (node) => {
+            node['random'] = Util.normalRandom();
+        })
     }
 
     function answer(node) {

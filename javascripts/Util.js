@@ -58,5 +58,12 @@ const Util = new function () {
         let blob = new Blob([strObj], { type: "text/plain;charset=utf-8" });
         // saveAs(blob, filename+".json");
     };
+
+    this.normalRandom = () => {
+        const mean = Math.random() * 20 + 40; // 40 ~ 60
+        const distribution = Math.random() * 10 + 10; // 10 ~ 20
+        return (2 * distribution) * (Math.random() - 0.5) + mean;
+    };
+
     return this;
 };
