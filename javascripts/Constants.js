@@ -10,14 +10,6 @@ const Constant = {
         'viridis': d3.interpolateViridis,
         'brewer_yellow-green-blue': d3.interpolateYlGnBu,
     },
-
-    centralityName: {
-        "deg": "Degree",
-        "deg_log": "Degree",
-        "cls": "cls",
-        "page": "page",
-        "btw": "Betweenness"
-    },
 };
 
 // https://github.com/d3/d3-scale-chromatic

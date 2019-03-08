@@ -100,7 +100,7 @@ const app = new Vue({
                 app.animation('image/degree/network_diagram-degree_', 10);
             } else if (type === 'task0') {
                 console.log('TASK 1/3');
-                app.task('karate', 'deg', 'single_greens', true, 0, true);
+                app.task('karate', 'deg_log', 'single_greens', true, 0, true);
             } else if (type === 'task1') {
                 console.log('TASK 2/3');
                 app.task('karate', 'cls', 'viridis', true, 1, true);
@@ -111,6 +111,7 @@ const app = new Vue({
                 const isHighValue = app.$data.pageInfo.isHighValue;
                 const taskNum = app.$data.pageInfo.taskNum;
                 const dName = dataNames[taskNum % 3];
+                console.log(centralityNames);
                 const centralityName = centralityNames[parseInt(taskNum / 3) % 4];
                 const colorMapName = colorMapNames[parseInt(taskNum / 12)];
                 console.log(taskNum);
