@@ -27,6 +27,10 @@ const loginModule = new function () {
             app.setUserInfo(uid, uname);
             app.printUserInfo();
             app.isSigned = true;
+
+            if (uname === '_save_csv') {
+                saveCSV();
+            }
         } else {
             // User is signed out.
             console.log("Signed out.");

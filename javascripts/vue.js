@@ -65,7 +65,7 @@ const app = new Vue({
             clearTimeout(intervalFunc);
             console.log("");
             console.log("Page " + app.$data.pageNum);
-            if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false) {
+            if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false && app.$data.pageInfo.taskNum <= 95) {
                 alert("Please Answer The Question.");
                 return;
             } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum < 95) {
@@ -74,7 +74,7 @@ const app = new Vue({
                     title: "ACTUAL TEST",
                     type: "actual_test",
                     isHighValue: isHighValue,
-                    taskNum: app.$data.pageInfo.taskNum + 1,
+                    taskNum: app.$data.pageInfo.taskNum + 16,
                     contentHTML: `
                         <div class="sub-title">
                             ACTUAL TEST
