@@ -74,7 +74,7 @@ const app = new Vue({
                     title: "ACTUAL TEST",
                     type: "actual_test",
                     isHighValue: isHighValue,
-                    taskNum: app.$data.pageInfo.taskNum + 16,
+                    taskNum: app.$data.pageInfo.taskNum + 1,
                     contentHTML: `
                         <div class="sub-title">
                             ACTUAL TEST
