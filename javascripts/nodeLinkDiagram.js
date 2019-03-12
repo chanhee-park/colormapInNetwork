@@ -16,18 +16,18 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
 
     // Set Render Size
     const svg = d3.select("svg#network"),
-        svgWidth = 800,
-        svgHeight = 800,
-        width = svgHeight * 0.7,
-        height = svgHeight * 0.7;
+        svgWidth = 500,
+        svgHeight = 500,
+        width = svgHeight * 0.65,
+        height = svgHeight * 0.65;
 
     // No Magic Number !
-    const nodeRadius = graph.nodes.length < 250 ? 8 - graph.nodes.length / 50 : 3,
+    const nodeRadius = 4,
         linkColor = '#000',
         linkOpacity = 0.25,
         legendX = 25,
         legendY = 50,
-        legendSize = 10;
+        legendSize = 5;
 
     let maxAxisVal = undefined,
         minCentralityVal = undefined,
@@ -102,7 +102,6 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
             return node[refCentrality];
         });
         maxCentralityVal = maxCentralityNode[refCentrality];
-
     }
 
     /**
@@ -232,7 +231,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
 
     function setRandCentrality() {
         _.forEach(graph.nodes, (node) => {
-            node['random'] = Util.normalRandom();
+            node['random'] = Math.random();
         })
     }
 
@@ -284,7 +283,10 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                 'data_name': dataName,
                 'centrality': refCentrality,
                 'color-map': colorMapName,
-                'is_high': isHighestValue
+                'is_high': isHighestValue,
+                'correct_value': isHighestValue ? maxCentralityVal : minCentralityVal,
+                'answered_value': userAnswerNode[refCentrality],
+                'answered_node': userAnswerNode,
             };
         }
         app.$data.isTaskComplete = true;

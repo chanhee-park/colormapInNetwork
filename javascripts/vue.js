@@ -54,16 +54,23 @@ const app = new Vue({
             app.changePage();
         },
         nextPage: () => {
-            if (app.$data.pageInfo.type !== 'actual_test') {
+            if ((app.$data.pageInfo.type === 'task0' || app.$data.pageInfo.type === 'task1' || app.$data.pageInfo.type === 'task2') && app.$data.isTaskComplete === false) {
+                alert("Please Answer The Question.");
+                return;
+            }
+
+            if (app.$data.pageInfo.type === 'color-blind') {
+                app.blindTest();
+            } else if (app.$data.pageInfo.type !== 'actual_test') {
                 app.$data.pageNum += 1;
-            } else if (app.$data.pageInfo.taskNum >= 95) {
+            } else if (app.$data.pageInfo.type !== 'actual_test' && app.$data.pageInfo.taskNum >= 95) {
                 app.$data.pageNum += 1;
             }
+
             app.changePage();
         },
         changePage: () => {
             clearTimeout(intervalFunc);
-            console.log("");
             console.log("Page " + app.$data.pageNum);
             if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false && app.$data.pageInfo.taskNum <= 95) {
                 alert("Please Answer The Question.");
@@ -76,20 +83,20 @@ const app = new Vue({
                     isHighValue: isHighValue,
                     taskNum: app.$data.pageInfo.taskNum + 1,
                     contentHTML: `
-                        <div class="sub-title">
-                            ACTUAL TEST
+                        <div class="render-area">
+                            <div class="button start-button">Start</div>
+                            <svg id="network"></svg>
                         </div>
                         <br>
-                        <div class="description">
+                        <div class="description right">
+                            <div class="sub-title">
+                                TASK
+                            </div>
                             <br>Given graph, select the node with <b>${(isHighValue ? 'highest' : 'lowest')}</b>value according to the color legend shown with it.
                             <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>${(isHighValue ? '높은' : '낮은' )}</b> 값을 가진 노드를 선택합니다.
                             <br>
                             <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
                             <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
-                        </div>
-                        <div class="render-area">
-                            <div class="button start-button">Start</div>
-                            <svg id="network"></svg>
                         </div>
                     `
                 };
@@ -108,16 +115,16 @@ const app = new Vue({
                 console.log('TASK 2/3');
                 app.task('karate', 'cls', 'viridis', true, 1, true);
             } else if (type === 'task2') {
-                app.task('karate', 'btw', 'plasma', true, 2, false);
+                app.task('karate', 'random', 'divergent_red_blue', true, 2, false);
                 console.log('TASK 3/3');
             } else if (type === 'actual_test') {
-                const taskNum = app.$data.pageInfo.taskNum;
-                const dName = dataNames[taskNum % 3];
-                const centralityName = centralityNames[parseInt(taskNum / 3) % 4];
-                const colorMapName = colorMapNames[parseInt(taskNum / 12)];
+                const taskRandNum = task_random_sequence[app.$data.pageInfo.taskNum];
+                const dName = dataNames[taskRandNum % 3];
+                const centralityName = centralityNames[parseInt(taskRandNum / 3) % 4];
+                const colorMapName = colorMapNames[parseInt(taskRandNum / 12)];
                 const isHighValue = app.$data.pageInfo.isHighValue;
-                console.log(taskNum);
-                app.task(dName, centralityName, colorMapName, false, taskNum, isHighValue);
+                console.log(taskRandNum);
+                app.task(dName, centralityName, colorMapName, false, taskRandNum, isHighValue);
             } else if (type === 'save') {
                 writeUserTestData(app.$data.user);
             }
@@ -139,6 +146,8 @@ const app = new Vue({
             const addedText = color_blind ? "" : "NOT ";
             app.$data.user.test['color_blind'] = color_blind;
             alert("You are " + addedText + "color-blind.");
+            app.$data.pageInfo.type = 'next-page';
+            app.nextPage();
         },
         task: (data, centrality, colormap, isTutorial, taskNum, isHighValue) => {
             app.$data.isTaskComplete = false;

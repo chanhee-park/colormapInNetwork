@@ -13,63 +13,37 @@ function saveCSV() {
     database.ref('/userTest').once('value').then(function (snapshot) {
         const testResults = snapshot.val();
         const retArr = [];
-        const colName = ['username', 'login_time', 'color_blindness',
-            'tutorial_1_time', 'tutorial_1_correctness',
-            'tutorial_2_time', 'tutorial_2_correctness',
-            'tutorial_3_time', 'tutorial_3_correctness'];
+        const colName = ['user_id', 'username', 'color_blindness',
+            'data', 'colormap', 'task', 'is_high',
+            'time', 'correctness', 'answered_val', 'correct_val'];
+
         for (let i = 1; i <= 96; i++) {
-            colName.push('task_' + i + '_centrality');
-            colName.push('task_' + i + '_color-map');
-            colName.push('task_' + i + '_data_name');
-            colName.push('task_' + i + '_is_high');
-            colName.push('task_' + i + '_time');
-            colName.push('task_' + i + '_correctness');
+
         }
         retArr.push(colName);
 
-        _.forEach(testResults, (r) => {
+        _.forEach(testResults, (r, uid) => {
+            const username = r.username;
+            const colorblind = r.color_blindness;
 
-            const row = [];
-            console.log(r);
-            row.push(r.username);
-            row.push(r.login_time);
-            row.push(r.color_blindness);
-            _.forEach(r.tutorial, (t, i) => {
-                if (t === undefined) {
-                    console.log(i);
-                    console.log(t);
-                    row.push(null);
-                    row.push(null);
-                } else {
-                    row.push(t.time);
-                    row.push(t.correctness);
+            _.forEach(r.test, (task) => {
+                if(task !== undefined){
+                    const row = [uid, username, colorblind];
+                    row.push(task['data_name']);
+                    row.push(task['color-map']);
+                    row.push(task['centrality']);
+                    row.push(task['is_high']);
+                    row.push(task['time']);
+                    row.push(task['correctness']);
+                    row.push(task['answered_value']);
+                    row.push(task['correct_value']);
+                    retArr.push(row)
                 }
             });
-            _.forEach(r.test, (t, i) => {
-                if (t === undefined) {
-                    console.log(i);
-                    console.log(t);
-                    row.push(null);
-                    row.push(null);
-                    row.push(null);
-                    row.push(null);
-                    row.push(null);
-                    row.push(null);
-                } else {
-                    row.push(t.centrality);
-                    row.push(t['color-map']);
-                    row.push(t.data_name);
-                    row.push(t.is_high);
-                    row.push(t.time);
-                    row.push(t.correctness);
-                }
-            });
-            retArr.push(row)
-
         });
 
         const csv = arrayToCSV(retArr);
-        console.log(csv)
+        console.log(csv);
     });
 }
 

@@ -55,40 +55,22 @@ const pages = [
     <style>
         .test_image-wrapper {
             display: inline-block;
-            width: 320px;
-            height: 350px;
+            width: 150px;
+            height: 170px;
             padding: 10px;
         }
 
         .test_image-wrapper img {
-            width: 300px;
+            width: 150px;
             display: inline-block;
         }
 
         .test_image-wrapper input {
-            width: 300px;
+            width: 150px;
             font-size: 18px;
             height: 30px;
             line-height: 30px;
             text-align: right;
-        }
-
-        #task-complete-button {
-            display: inline-block;
-            width: 150px;
-            margin: 15px 20px;
-        }
-
-        .button {
-            position: static;
-        }
-
-        .button.back-page-button {
-            float: left;
-        }
-
-        .button.next-page-button {
-            float: right;
         }
     </style>
     <div class="description">This study examines the usability of colors in network visualizations. Therefore, before
@@ -96,7 +78,6 @@ const pages = [
     </div>
     <div class="description">이 연구는 네트워크 시각화에서 색상의 사용성을 검토합니다. 따라서 실험 전에 색맹 검사를 받아야 합니다.
     </div>
-    <br>
     <div class="description">Look at the picture below and enter what number you see.</div>
     <div class="description">아래 사진을 보고 보이는 숫자를 입력해 주세요.</div>
     <br>
@@ -144,61 +125,61 @@ const pages = [
         title: "Training Question (1/3)",
         type: "task0",
         contentHTML: `
-    <div class="sub-title">
-        Task
+    <div class="render-area">
+        <div class="button start-button">Start</div>
+        <svg id="network"></svg>
     </div>
-    <br>
-    <div class="description">
+    <div class="description right">
+        <div class="sub-title">
+            Task
+        </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
-    <div class="render-area">
-        <div class="button start-button">Start</div>
-        <svg id="network"></svg>
-    </div>`,
+    `,
     },
     {
         title: "Training Question (2/3)",
         type: "task1",
         contentHTML: `
-    <div class="sub-title">
-        Task
+    <div class="render-area">
+        <div class="button start-button">Start</div>
+        <svg id="network"></svg>
     </div>
-    <br>
-    <div class="description">
+    <div class="description right">
+        <div class="sub-title">
+            Task
+        </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
-    <div class="render-area">
-        <div class="button start-button">Start</div>
-        <svg id="network"></svg>
-    </div>`,
+`,
     },
     {
         title: "Training Question (3/3)",
         type: "task2",
         contentHTML: `
-    <div class="sub-title">
-        Task
+    <div class="render-area">
+        <div class="button start-button">Start</div>
+        <svg id="network"></svg>
     </div>
-    <br>
-    <div class="description">
+    <div class="description right">
+        <div class="sub-title">
+            Task
+        </div>
         <br>Given graph, select the node with <b>lowest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>낮은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
-    <div class="render-area">
-        <div class="button start-button">Start</div>
-        <svg id="network"></svg>
-    </div>`,
+`,
     },
     {
         title: "ACTUAL TEST",
@@ -206,21 +187,21 @@ const pages = [
         taskNum: 0,
         isHighValue: true,
         contentHTML: `
-            <div class="sub-title">
-                ACTUAL TEST
+            <div class="render-area">
+                <div class="button start-button">Start</div>
+                <svg id="network"></svg>
             </div>
-            <br>
-            <div class="description">
+            <div class="description right">
+                <div class="sub-title">
+                    TASK
+                </div>
                 <br>Given graph, select the node with <b>highest</b>value according to the color legend shown with it.
                 <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
                 <br>
                 <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
                 <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
             </div>
-            <div class="render-area">
-                <div class="button start-button">Start</div>
-                <svg id="network"></svg>
-            </div>
+            
         `
     },
     {
@@ -229,3 +210,31 @@ const pages = [
         contentHTML: ``,
     },
 ];
+
+const random_page_idx = function () {
+    let arr = fill_n_to_m(0, 95);
+    arr = shuffle(arr);
+    return arr;
+};
+
+function shuffle(a) {
+    let j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+function fill_n_to_m(n, m) {
+    const arr = [];
+    for (let i = n; i <= m; i++) {
+        arr.push(i);
+    }
+    return arr;
+}
+
+let task_random_sequence = random_page_idx();
+console.log("ACTUAL TASK SEQUENCE:", task_random_sequence);
