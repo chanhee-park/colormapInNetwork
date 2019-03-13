@@ -7,11 +7,13 @@ const pages = [
     <div class="description">
         Todays user study is about “Colormaps in Network Visualization/Graph” (Node link diagram). This is a research study.
         We want to understand how to best show network data with respect to color scales/schemes used for representing the nodes.
+        This experiment involves 96 tasks. The estimated time for this experiment is about 20 minutes.
         We will present some visualizations (node link diagram) of different data sets with links between those nodes.
     </div>
     <div class="description">
     오늘의 사용자 연구는 "네트워크 시각화/그래프에서 컬러맵별 사용성 평가"에 관한 것입니다. 
-    네트워크 데이터를 가장 잘 표시하는 색상 척도를 알고 싶습니다. 
+    이 실험은 네트워크 데이터를 가장 잘 표시하는 색상 척도가 무엇인지를 알아내고자 설계되었습니다.
+    이 실험은 96개의 작업을 포함합니다. 이 실험의 예상 소요 시간은 20분 내외 입니다. 
     우선, 네트워크 시각화가 무엇인지 설명하기 위해 여러 데이터 세트에 대한 몇 가지 노드 링크 다이어그램을 보여 드리겠습니다.
     </div>
     <br>
@@ -55,18 +57,18 @@ const pages = [
     <style>
         .test_image-wrapper {
             display: inline-block;
-            width: 150px;
-            height: 170px;
+            width: 250px;
+            height: 270px;
             padding: 10px;
         }
 
         .test_image-wrapper img {
-            width: 150px;
+            width: 250px;
             display: inline-block;
         }
 
         .test_image-wrapper input {
-            width: 150px;
+            width: 250px;
             font-size: 18px;
             height: 30px;
             line-height: 30px;
@@ -125,13 +127,18 @@ const pages = [
         title: "Training Question (1/3)",
         type: "task0",
         contentHTML: `
+<div class="flex-wrapper">
     <div class="render-area">
         <div class="button start-button">Start</div>
         <svg id="network"></svg>
     </div>
     <div class="description right">
         <div class="sub-title">
-            Task
+            Training Question 1/3 
+        </div>
+        <br>
+        <div class="sub-title">
+            Highest Question / 높은 값 찾기
         </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
@@ -139,19 +146,26 @@ const pages = [
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
+</div> 
     `,
     },
     {
         title: "Training Question (2/3)",
         type: "task1",
         contentHTML: `
+<div class="flex-wrapper">
     <div class="render-area">
         <div class="button start-button">Start</div>
         <svg id="network"></svg>
     </div>
+    <br>
     <div class="description right">
         <div class="sub-title">
-            Task
+            Training Question 2/3 
+        </div>
+        <br>        
+        <div class="sub-title">
+            Highest Question / 높은 값 찾기
         </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
@@ -159,19 +173,25 @@ const pages = [
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
+</div> 
 `,
     },
     {
         title: "Training Question (3/3)",
         type: "task2",
         contentHTML: `
+<div class="flex-wrapper">
     <div class="render-area">
         <div class="button start-button">Start</div>
         <svg id="network"></svg>
     </div>
     <div class="description right">
         <div class="sub-title">
-            Task
+            Training Question 3/3 
+        </div>
+        <br>
+        <div class="sub-title">
+            Lowest Question / 낮은 값 찾기
         </div>
         <br>Given graph, select the node with <b>lowest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>낮은</b> 값을 가진 노드를 선택합니다.
@@ -179,6 +199,7 @@ const pages = [
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
+</div> 
 `,
     },
     {
@@ -187,22 +208,27 @@ const pages = [
         taskNum: 0,
         isHighValue: true,
         contentHTML: `
-            <div class="render-area">
-                <div class="button start-button">Start</div>
-                <svg id="network"></svg>
-            </div>
-            <div class="description right">
-                <div class="sub-title">
-                    TASK
-                </div>
-                <br>Given graph, select the node with <b>highest</b>value according to the color legend shown with it.
-                <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
-                <br>
-                <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
-                <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
-            </div>
-            
-        `
+<div class="flex-wrapper">
+    <div class="render-area">
+        <div class="button start-button">Start</div>
+        <svg id="network"></svg>
+    </div>
+    <div class="description right">
+        <div class="sub-title">
+            Task 1/96
+        </div>
+        <br>
+        <div class="sub-title">
+            Highest Question / 높은 값 찾기
+        </div>
+        <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
+        <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
+        <br>
+        <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
+        <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+    </div>
+</div>     
+`
     },
     {
         title: "SAVE TEST DATA",

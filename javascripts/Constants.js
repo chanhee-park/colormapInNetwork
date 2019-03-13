@@ -28,4 +28,24 @@ const colorMapNames = [
     'divergent_red_blue', 'plasma', 'viridis', 'brewer_yellow-green-blue'
 ];
 
+const Data = new function () {
+    this.dataset = {};
+    const allDataNames = ['dolphins', 'football', 'karate', 'lesmis', 'netscience'];
+    const that = this;
+
+    this.road = async () => {
+        for (let i = 0; i < allDataNames.length; i++) {
+            that.dataset[allDataNames[i]] = await $.getJSON('./data/' + allDataNames[i] + '.json');
+        }
+    };
+
+    this.getData = (dataName) => {
+        return that.dataset[dataName];
+    };
+
+    return this;
+};
+
+Data.road();
+
 console.log(Constant);

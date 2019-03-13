@@ -1,6 +1,6 @@
-async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, isHighestValue = true) {
+function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, isHighestValue = true) {
     const startTime = Util.getTime();
-    const graph = await $.getJSON('./data/' + dataName + '.json');
+    const graph = Data.getData(dataName);
     const colorMap = Constant.colorMaps[colorMapName];
 
     const rotate = Math.random() * 360;
@@ -15,16 +15,17 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
     console.log(taskNum, dataName, refCentrality, colorMapName, isTutorial ? "tutorial" : "not-tutorial", isHighestValue ? "high" : "low");
 
     // Set Render Size
+    const svgHTML = document.getElementById('network');
     const svg = d3.select("svg#network"),
-        svgWidth = 500,
-        svgHeight = 500,
-        width = svgHeight * 0.65,
-        height = svgHeight * 0.65;
+        svgWidth = svgHTML.width.baseVal.value,
+        svgHeight = svgHTML.height.baseVal.value,
+        width = svgHeight * 0.7,
+        height = svgHeight * 0.7;
 
     // No Magic Number !
-    const nodeRadius = 4,
+    const nodeRadius = 5,
         linkColor = '#000',
-        linkOpacity = 0.25,
+        linkOpacity = 0.15,
         legendX = 25,
         legendY = 50,
         legendSize = 5;
@@ -33,50 +34,10 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
         minCentralityVal = undefined,
         maxCentralityVal = undefined;
 
-    let answeredNodes, highlightNode;
-
     setAxisInfo();
     drawColorLegend();
     drawLinks();
     drawNodes();
-
-    function drawHighlightNode() {
-        d3.selectAll('.node').remove();
-
-        _.forEach(highlightNode, (nodeId) => {
-            const node = graph.nodes[nodeId];
-            const coord = getCoord({ x: node.x, y: node.y });
-            const color = '#555';
-            svg.append('circle')
-                .attrs({
-                    cx: coord.x,
-                    cy: coord.y,
-                    r: nodeRadius + 5,
-                    fill: color
-                })
-                .classed('node', true)
-                .on('click', function () {
-                    answer(node);
-                })
-        });
-        _.forEach(answeredNodes, (nodeId) => {
-            const node = graph.nodes[nodeId];
-            const coord = getCoord({ x: node.x, y: node.y });
-            const color = '#000';
-            svg.append('circle')
-                .attrs({
-                    cx: coord.x,
-                    cy: coord.y,
-                    r: nodeRadius + 5,
-                    fill: color
-                })
-                .classed('node', true)
-                .on('click', function () {
-                    answer(node);
-                })
-        });
-        drawNodes();
-    }
 
     /**
      * Set Axis Information
@@ -167,7 +128,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
                 })
                 .classed('node', true)
                 .on('click', function () {
-                    answer(node);
+                    checkAnswerResult(node);
                 })
         });
         transformDiagram();
@@ -198,12 +159,11 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
 
     function transformDiagram() {
         d3.selectAll('circle')
-            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+            .attr('transform', `translate(0, 30) rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
 
         d3.selectAll('line')
-            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+            .attr('transform', `translate(0, 30) rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
     }
-
 
     /**
      * 'pos' is the coordinate with center point (0,0).
@@ -235,10 +195,6 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
         })
     }
 
-    function answer(node) {
-        checkAnswerResult(node);
-    }
-
     function checkAnswerResult(userAnswerNode) {
         if (app.$data.isTaskComplete) {
             d3.selectAll('.correctnessText').remove();
@@ -266,7 +222,7 @@ async function drawGraph(dataName, refCentrality, colorMapName, isTutorial, task
             svg.append('text')
                 .text('Your answer is ' + isCorrectText + ' and time completion is ' + elapsedTime + ' seconds')
                 .attrs({
-                    x: 50,
+                    x: 10,
                     y: svgHeight - 10,
                     'text-anchor': 'start',
                     'alignment-baseline': 'ideographic'

@@ -22,7 +22,7 @@
         <div class="login login-button" id="login-button" v-if="! isSigned" v-on:click="login">login</div>
     </div>
     <div class="test-zone">
-        <div class="title">{{ pageInfo.title }}</div>
+        <div v-if="pageNum<2" class="title">{{ pageInfo.title }}</div>
         <div class="content">
             <div class="content-html" v-html="pageInfo.contentHTML"></div>
         </div>
