@@ -116,7 +116,7 @@ const app = new Vue({
         pageInteraction: (type) => {
             if (type === 'task0') {
                 console.log('TASK 1/3');
-                app.task('karate', 'deg_log', 'single_greens', true, 0, true);
+                app.task('karate', 'deg_log', 'single_blue', true, 0, true);
             } else if (type === 'task1') {
                 console.log('TASK 2/3');
                 app.task('karate', 'cls', 'viridis', true, 1, true);
