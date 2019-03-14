@@ -104,9 +104,7 @@ const app = new Vue({
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
     </div>
-</div>
-                    `
-
+</div>`
                 };
             } else {
                 app.printUserInfo();

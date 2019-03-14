@@ -30,6 +30,8 @@ const loginModule = new function () {
 
             if (uname === '_save_csv') {
                 saveCSV();
+            } else if (uname === '_save_csv_2'){
+                saveCSV2();
             }
         } else {
             // User is signed out.
