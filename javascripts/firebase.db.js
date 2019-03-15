@@ -20,7 +20,6 @@ function saveCSV() {
         retArr.push(colName);
 
         _.forEach(testResults, (r, uid) => {
-            console.log(r);
             const username = r.username;
             const colorblind = r.color_blindness;
             _.forEach(r.test, (task) => {
@@ -39,9 +38,8 @@ function saveCSV() {
             });
         });
 
-        console.log("");
-        // const csv = arrayToCSV(retArr);
-        // console.log(csv);
+        const csv = arrayToCSV(retArr);
+        console.log(csv);
     });
 }
 
@@ -112,8 +110,6 @@ function saveCSV2() {
         retArr.push(colName);
 
         _.forEach(otherForm, (o) => {
-            console.log(o);
-
             _.forEach(o['test'], (t, taskName) => {
                 if (t !== undefined) {
                     const row = _.fill(new Array(colName.length), undefined);
@@ -129,7 +125,6 @@ function saveCSV2() {
                         const colorMapIdx = colorMapNames.indexOf(colorMapName);
                         if (colorMapIdx >= 0) {
                             const dataIdx = 5 + colorMapIdx * 2;
-                            console.log(colorMapName, colorMapIdx, dataIdx)
                             row[dataIdx] = task.correctness;
                             row[dataIdx + 1] = task.time;
                         }
@@ -139,7 +134,6 @@ function saveCSV2() {
                 }
             });
         });
-        console.log(retArr);
         const csv = arrayToCSV(retArr);
         console.log(csv);
     });
