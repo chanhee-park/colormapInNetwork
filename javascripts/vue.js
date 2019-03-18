@@ -85,26 +85,28 @@ const app = new Vue({
                     isHighValue: isHighValue,
                     taskNum: app.$data.pageInfo.taskNum + 1,
                     contentHTML: `
-<div class="flex-wrapper">
-    <div class="render-area">
-        <div class="button start-button">Start</div>
-        <svg id="network"></svg>
-    </div>
-    <div class="description right">
-        <div class="sub-title">
-            Task ${( app.$data.pageInfo.taskNum + 1)}/96
-        </div>
-        <br>
-        <div class="sub-title">
-            ${(isHighValue ? 'Highest' : 'Lowest')} Question / ${(isHighValue ? '높은' : '낮은' )} 값 찾기
-        </div>
-        <br>Given graph, select the node with <b>${(isHighValue ? 'highest' : 'lowest')}</b> value according to the color legend shown with it.
-        <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>${(isHighValue ? '높은' : '낮은' )}</b> 값을 가진 노드를 선택합니다.
-        <br>
-        <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
-        <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
-    </div>
-</div>`
+                        <div class="flex-wrapper">
+                            <div class="render-area">
+                                <div class="button start-button">Start</div>
+                                <svg id="network"></svg>
+                            </div>
+                            <div class="description right">
+                                <div class="sub-title">
+                                    Task ${( app.$data.pageInfo.taskNum + 2)}/96
+                                </div>
+                                <br>
+                                <div class="sub-title">
+                                    ${(isHighValue ? 'Highest' : 'Lowest')} Value / ${(isHighValue ? '높은' : '낮은' )} 값 찾기
+                                </div>
+                                <br>Given graph, select the node with <b>${(isHighValue ? 'highest' : 'lowest')}</b> value according to the color legend shown with it.
+                                <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>${(isHighValue ? '높은' : '낮은' )}</b> 값을 가진 노드를 선택합니다.
+                                <br>
+                                <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
+                                <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+                                <br>
+                                <svg id="legend"></svg>
+                            </div>
+                        </div>`
                 };
             } else {
                 app.printUserInfo();

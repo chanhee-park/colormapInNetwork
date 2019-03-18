@@ -138,13 +138,15 @@ const pages = [
         </div>
         <br>
         <div class="sub-title">
-            Highest Question / 높은 값 찾기
+            Highest Value / 높은 값 찾기
         </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+        <br>
+        <svg id="legend"></svg>    
     </div>
 </div> 
     `,
@@ -165,13 +167,15 @@ const pages = [
         </div>
         <br>        
         <div class="sub-title">
-            Highest Question / 높은 값 찾기
+            Highest Value / 높은 값 찾기
         </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+        <br>
+        <svg id="legend"></svg>
     </div>
 </div> 
 `,
@@ -191,13 +195,15 @@ const pages = [
         </div>
         <br>
         <div class="sub-title">
-            Lowest Question / 낮은 값 찾기
+            Lowest Value / 낮은 값 찾기
         </div>
         <br>Given graph, select the node with <b>lowest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>낮은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+        <br>
+        <svg id="legend"></svg>
     </div>
 </div> 
 `,
@@ -219,13 +225,15 @@ const pages = [
         </div>
         <br>
         <div class="sub-title">
-            Highest Question / 높은 값 찾기
+            Highest Value / 높은 값 찾기
         </div>
         <br>Given graph, select the node with <b>highest</b> value according to the color legend shown with it.
         <br>주어진 그래프를 사용하여 표시된 색상 범례에 따라 가장 <b>높은</b> 값을 가진 노드를 선택합니다.
         <br>
         <br>You can select nodes as answers by clicking on them. A Selected answer will have a black circle around the node. 
         <br>노드를 한 번 클릭하여 해당 노드를 응답으로 선택할 수 있습니다. 선택한 답변에는 노드 주위에 검은색 원이 있습니다.
+        <br>
+        <svg id="legend"></svg>
     </div>
 </div>     
 `

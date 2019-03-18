@@ -17,6 +17,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
     // Set Render Size
     const svgHTML = document.getElementById('network');
     const svg = d3.select("svg#network"),
+        legendSvg = d3.select("svg#legend"),
         svgWidth = svgHTML.width.baseVal.value,
         svgHeight = svgHTML.height.baseVal.value,
         width = svgHeight * 0.7,
@@ -69,7 +70,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
      * Draw Color Legend
      */
     function drawColorLegend() {
-        svg.append('text')
+        legendSvg.append('text')
             .text('low')
             .attrs({
                 x: legendX,
@@ -77,7 +78,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
                 'text-anchor': 'start',
                 'alignment-baseline': 'ideographic'
             });
-        svg.append('text')
+        legendSvg.append('text')
             .text('high')
             .attrs({
                 x: legendX + 255,
@@ -91,7 +92,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
             const relative = i / 255;
             const virtualCentrality = Util.getAbsoluteVal(relative, minCentralityVal, maxCentralityVal);
             const color = getHexColor(virtualCentrality);
-            svg.append('rect')
+            legendSvg.append('rect')
                 .attrs({
                     x: legendX + i,
                     y: legendY,
@@ -100,7 +101,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
                     fill: color,
                 });
             if (i === 0 || i === 127 || i === 255) {
-                svg.append('text')
+                legendSvg.append('text')
                     .text(virtualCentrality.toFixed(2))
                     .attrs({
                         x: legendX + i,
