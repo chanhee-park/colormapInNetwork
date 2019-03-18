@@ -168,8 +168,12 @@ a {
     height: 100%;
 }
 
+svg#legend {
+    width: 100%;
+}
+
 circle.node:hover {
-    cursor: pointer
+    cursor: pointer;
 }
 
 .flex-zone {

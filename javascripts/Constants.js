@@ -18,7 +18,7 @@ const Constant = {
 // https://github.com/d3/d3-scale-chromatic
 //  d3.interpolateSinebow(t)
 const dataNames = [
-    "dolphins", "lesmis", "football"
+     "lesmis", "football", "netscience",
 ];
 
 const centralityNames = [

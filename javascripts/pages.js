@@ -38,8 +38,10 @@ const pages = [
     <br>
     <div class="sub-title">Interaction</div>
     <div class="description">You can interact with the visualization. <b>Select</b> nodes as <b>answers</b> by clicking on them once.
+    <br> There can be several correct answers. If you select only one of the correct answer nodes, the answer will be recorded correctly.
     </div>
     <div class="description">노드를 한 번 클릭하여 노드를 <b>응답으로 선택</b>할 수 있습니다.
+    <br> 정답은 여러개 일 수 있습니다. 정답 노드 중 하나만 응답으로 선택하면 정답으로 기록됩니다.
     </div>
     <br>
 
