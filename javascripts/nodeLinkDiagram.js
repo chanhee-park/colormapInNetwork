@@ -29,7 +29,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
         linkOpacity = 0.15,
         legendX = 25,
         legendY = 50,
-        legendSize = 5;
+        legendSize = 15;
 
     let maxAxisVal = undefined,
         minCentralityVal = undefined,
@@ -81,9 +81,9 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
         legendSvg.append('text')
             .text('high')
             .attrs({
-                x: legendX + 255,
+                x: legendX + 255 * 1.5,
                 y: legendY - 5,
-                'text-anchor': 'start',
+                'text-anchor': 'middle',
                 'alignment-baseline': 'ideographic'
             });
 
@@ -94,9 +94,9 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
             const color = getHexColor(virtualCentrality);
             legendSvg.append('rect')
                 .attrs({
-                    x: legendX + i,
+                    x: legendX + i * 1.5,
                     y: legendY,
-                    width: legendSize,
+                    width: 4,
                     height: legendSize,
                     fill: color,
                 });
@@ -104,7 +104,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
                 legendSvg.append('text')
                     .text(virtualCentrality.toFixed(2))
                     .attrs({
-                        x: legendX + i,
+                        x: legendX + i * 1.5,
                         y: legendY + legendSize + 15,
                         'text-anchor': 'middle',
                         'alignment-baseline': 'central'
