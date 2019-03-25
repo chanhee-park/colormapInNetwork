@@ -248,7 +248,7 @@ const pages = [
 ];
 
 const random_page_idx = function () {
-    let arr = fill_n_to_m(0, 95);
+    let arr = fill_n_to_m(0, 35);
     arr = shuffle(arr);
     return arr;
 };

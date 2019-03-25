@@ -63,7 +63,7 @@ const app = new Vue({
                 app.blindTest();
             } else if (app.$data.pageInfo.type !== 'actual_test') {
                 app.$data.pageNum += 1;
-            } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum >= 95) {
+            } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum >= 35) {
                 app.$data.pageNum += 1;
                 console.log("pageNum", app.$data.pageNum);
             }
@@ -73,10 +73,10 @@ const app = new Vue({
         changePage: () => {
             clearTimeout(intervalFunc);
             console.log("Page " + app.$data.pageNum);
-            if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false && app.$data.pageInfo.taskNum <= 95) {
+            if (app.$data.pageInfo.type === 'actual_test' && app.$data.isTaskComplete === false && app.$data.pageInfo.taskNum <= 35) {
                 alert("Please Answer The Question.");
                 return;
-            } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum < 95) {
+            } else if (app.$data.pageInfo.type === 'actual_test' && app.$data.pageInfo.taskNum < 35) {
                 console.log("TASK: ", app.$data.pageInfo.taskNum);
                 const isHighValue = Math.floor(Math.random() * 10) < 6;
                 app.$data.pageInfo = {
@@ -92,7 +92,7 @@ const app = new Vue({
                             </div>
                             <div class="description right">
                                 <div class="sub-title">
-                                    Task ${( app.$data.pageInfo.taskNum + 2)}/96
+                                    Task ${( app.$data.pageInfo.taskNum + 2)}/36
                                 </div>
                                 <br>
                                 <div class="sub-title">
@@ -128,8 +128,8 @@ const app = new Vue({
             } else if (type === 'actual_test') {
                 const taskRandNum = task_random_sequence[app.$data.pageInfo.taskNum];
                 const dName = dataNames[taskRandNum % 3];
-                const centralityName = centralityNames[parseInt(taskRandNum / 3) % 4];
-                const colorMapName = colorMapNames[parseInt(taskRandNum / 12)];
+                const centralityName = centralityNames[parseInt(taskRandNum / 3) % 3];
+                const colorMapName = colorMapNames[parseInt(taskRandNum / 9)];
                 const isHighValue = app.$data.pageInfo.isHighValue;
                 console.log(taskRandNum);
                 app.task(dName, centralityName, colorMapName, false, taskRandNum, isHighValue);

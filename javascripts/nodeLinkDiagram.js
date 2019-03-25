@@ -4,7 +4,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
     const colorMap = Constant.colorMaps[colorMapName];
 
     const rotate = Math.random() * 360;
-    const scale = 1 - Math.random() * 0.1;
+    const scale = 1;
     const reflectX = Math.random() > 0.5 ? -1 : 1;
     const reflectY = Math.random() > 0.5 ? -1 : 1;
 
@@ -20,8 +20,8 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
         legendSvg = d3.select("svg#legend"),
         svgWidth = svgHTML.width.baseVal.value,
         svgHeight = svgHTML.height.baseVal.value,
-        width = (dataName === 'netscience') ? svgHeight * 0.9 : svgHeight * 0.8,
-        height = (dataName === 'netscience') ? svgHeight * 0.9 : svgHeight * 0.8;
+        width = (dataName === 'netscience') ? svgHeight * 0.93 : svgHeight * 0.8,
+        height = (dataName === 'netscience') ? svgHeight * 0.93 : svgHeight * 0.8;
 
     // No Magic Number !
     const nodeRadius = (dataName === 'netscience') ? 3 : 5,
@@ -157,7 +157,6 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
         });
     }
 
-
     function transformDiagram() {
         d3.selectAll('circle')
             .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
@@ -184,9 +183,15 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
      * @param centrality
      * @returns {string} : rgb({r}, {g}, {b})
      */
+
     function getHexColor(centrality) {
         const relativeVal = Util.getRelativeVal(centrality, minCentralityVal, maxCentralityVal);
-        const nonZeroVal = (relativeVal + 0.2) / 1.2;
+        let nonZeroVal = relativeVal;
+        if (colorMapName === 'single_blue') {
+            nonZeroVal = (relativeVal + 0.2) / 1.2;
+        } else if (colorMapName === 'rainbow') {
+            nonZeroVal = (relativeVal + 0.3) / 1.3;
+        }
         return colorMap(nonZeroVal);
     }
 

@@ -155,8 +155,8 @@ a {
 .render-area {
     min-width: 500px;
     min-height: 500px;
-    max-width: calc(100vh - 200px);
-    max-height: calc(100vh - 200px);
+    max-width: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
     width: calc(100vw - 450px);
     height: calc(100vw - 450px);
     float: left;
@@ -207,4 +207,10 @@ text {
 
 .flex-wrapper {
     display: flex;
+}
+
+.button.fix {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
 }

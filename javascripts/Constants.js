@@ -1,3 +1,5 @@
+// https://github.com/d3/d3-scale-chromatic
+//  d3.interpolateSinebow(t)
 const Constant = {
     that: this,
     colorMaps: {
@@ -7,28 +9,24 @@ const Constant = {
         'divergent_red_blue': d3.interpolateRdYlBu,
         'viridis': d3.interpolateViridis,
         'brewer_yellow-green-blue': d3.interpolateYlGnBu,
-        'rainbow': d3.interpolateSinebow,
+        'rainbow': d3.interpolateRainbow,
         'magma': d3.interpolateMagma,
-        // 'plasma': d3.interpolatePlasma,
-        // 'single_greens': d3.interpolateGreens,
-        // 'heat': d3.interpolateYlOrRd, // multi hue : from yellow to red
+        'plasma': d3.interpolatePlasma,
+        'single_greens': d3.interpolateGreens,
+        'heat': d3.interpolateYlOrRd,
     },
 };
 
-// https://github.com/d3/d3-scale-chromatic
-//  d3.interpolateSinebow(t)
 const dataNames = [
      "lesmis", "football", "netscience",
 ];
 
 const centralityNames = [
-    "deg_log", "btw", "page", "random"
+    "deg_log", "btw", "random"
 ];
 
-const colorMapNames = [
-    'single_blue', 'rainbow', 'single_grey', 'inferno',
-    'divergent_red_blue', 'magma', 'viridis', 'brewer_yellow-green-blue'
-];
+const colorMapNames = ['single_blue', 'rainbow', 'divergent_red_blue','viridis'];
+//    'single_grey', 'inferno','magma',  'brewer_yellow-green-blue'
 
 const Data = new function () {
     this.dataset = {};

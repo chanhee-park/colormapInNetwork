@@ -100,12 +100,8 @@ function saveCSV2() {
             'user_id', 'username', 'color_blindness', 'data', 'task',
             'single_blue_c', 'single_blue_t',
             'rainbow_c', 'rainbow_t',
-            'single_grey_c', 'single_grey_t',
-            'inferno_c', 'inferno_t',
             'divergent_red_blue_c', 'divergent_red_blue_t',
-            'magma_c', 'magma_t',
             'viridis_c', 'viridis_t',
-            'brewer_yellow-green-blue_c', 'brewer_yellow-green-blue_t'
         ];
         retArr.push(colName);
 
