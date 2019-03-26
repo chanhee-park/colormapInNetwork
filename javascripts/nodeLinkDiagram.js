@@ -20,11 +20,11 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
         legendSvg = d3.select("svg#legend"),
         svgWidth = svgHTML.width.baseVal.value,
         svgHeight = svgHTML.height.baseVal.value,
-        width = (dataName === 'netscience') ? svgHeight * 0.93 : svgHeight * 0.8,
-        height = (dataName === 'netscience') ? svgHeight * 0.93 : svgHeight * 0.8;
+        width = (dataName === 'jazz') ? svgHeight * 0.93 : svgHeight * 0.8,
+        height = (dataName === 'jazz') ? svgHeight * 0.93 : svgHeight * 0.8;
 
     // No Magic Number !
-    const nodeRadius = (dataName === 'netscience') ? 3 : 5,
+    const nodeRadius = (dataName === 'jazz') ? 3 : 5,
         linkColor = '#000',
         linkOpacity = 0.15,
         legendX = 25,
