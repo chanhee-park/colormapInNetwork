@@ -18,7 +18,7 @@ const Constant = {
 };
 
 const dataNames = [
-     "lesmis", "football", "netscience",
+     "lesmis", "football", "jazz",
 ];
 
 const centralityNames = [
