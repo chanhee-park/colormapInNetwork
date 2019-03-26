@@ -30,7 +30,7 @@ const colorMapNames = ['single_blue', 'rainbow', 'divergent_red_blue','viridis']
 
 const Data = new function () {
     this.dataset = {};
-    const allDataNames = ['dolphins', 'football', 'karate', 'lesmis', 'netscience'];
+    const allDataNames = ['dolphins', 'football', 'karate', 'lesmis', 'netscience', 'jazz'];
     const that = this;
 
     this.road = async () => {
