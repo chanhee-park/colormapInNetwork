@@ -20,22 +20,24 @@ function saveCSV() {
         retArr.push(colName);
 
         _.forEach(testResults, (r, uid) => {
-            const username = r.username;
-            const colorblind = r.color_blindness;
-            _.forEach(r.test, (task) => {
-                if (task !== undefined) {
-                    const row = [uid, username, colorblind];
-                    row.push(task['data_name']);
-                    row.push(task['color-map']);
-                    row.push(task['centrality']);
-                    row.push(task['is_high']);
-                    row.push(task['time']);
-                    row.push(task['correctness']);
-                    row.push(task['answered_value']);
-                    row.push(task['correct_value']);
-                    retArr.push(row)
-                }
-            });
+            if (r.login_time > 1553581330520) {
+                const username = r.username;
+                const colorblind = r.color_blindness;
+                _.forEach(r.test, (task) => {
+                    if (task !== undefined) {
+                        const row = [uid, username, colorblind];
+                        row.push(task['data_name']);
+                        row.push(task['color-map']);
+                        row.push(task['centrality']);
+                        row.push(task['is_high']);
+                        row.push(task['time']);
+                        row.push(task['correctness']);
+                        row.push(task['answered_value']);
+                        row.push(task['correct_value']);
+                        retArr.push(row)
+                    }
+                });
+            }
         });
 
         const csv = arrayToCSV(retArr);
@@ -50,47 +52,49 @@ function saveCSV2() {
         const otherForm = {};
 
         _.forEach(testResults, (r, uid) => {
-            console.log("START ONE USER");
-            otherForm[uid] = {
-                'uid': uid,
-                'color_blindness': r['color_blindness'],
-                'username': r['username'],
-                'test': {},
-            };
-
-            const test = r['test'];
-            otherForm[uid]['test'] = {};
-
-            for (let i = 0; i < test.length; i++) {
-                const t = test[i];
-                if (t === undefined) {
-                    continue;
-                }
-                const centrality = t['centrality'];
-                const dName = t['data_name'];
-
-                const colormap = t['color-map'];
-                const isHigh = t['is_high'];
-                const time = t['time'];
-                const correctness = t['correctness'];
-                const correct_value = t['correct_value'];
-                const answered_value = t['answered_value'];
-
-                const addedElem = {
-                    colormap: colormap,
-                    time: time,
-                    correctness: correctness,
-                    correct_value: correct_value,
-                    answered_value: answered_value,
-                    isHigh: isHigh,
+            if (r.login_time > 1553581330520) {
+                console.log("START ONE USER");
+                otherForm[uid] = {
+                    'uid': uid,
+                    'color_blindness': r['color_blindness'],
+                    'username': r['username'],
+                    'test': {},
                 };
 
-                const key = dName + '_' + centrality;
+                const test = r['test'];
+                otherForm[uid]['test'] = {};
 
-                if (otherForm[uid]['test'][key] === undefined) {
-                    otherForm[uid]['test'][key] = [];
+                for (let i = 0; i < test.length; i++) {
+                    const t = test[i];
+                    if (t === undefined) {
+                        continue;
+                    }
+                    const centrality = t['centrality'];
+                    const dName = t['data_name'];
+
+                    const colormap = t['color-map'];
+                    const isHigh = t['is_high'];
+                    const time = t['time'];
+                    const correctness = t['correctness'];
+                    const correct_value = t['correct_value'];
+                    const answered_value = t['answered_value'];
+
+                    const addedElem = {
+                        colormap: colormap,
+                        time: time,
+                        correctness: correctness,
+                        correct_value: correct_value,
+                        answered_value: answered_value,
+                        isHigh: isHigh,
+                    };
+
+                    const key = dName + '_' + centrality;
+
+                    if (otherForm[uid]['test'][key] === undefined) {
+                        otherForm[uid]['test'][key] = [];
+                    }
+                    otherForm[uid]['test'][key].push(addedElem);
                 }
-                otherForm[uid]['test'][key].push(addedElem);
             }
         });
         console.log(otherForm);

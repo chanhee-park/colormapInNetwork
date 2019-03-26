@@ -223,7 +223,7 @@ const pages = [
     </div>
     <div class="description right">
         <div class="sub-title">
-            Task 1/96
+            Task 1/36
         </div>
         <br>
         <div class="sub-title">
