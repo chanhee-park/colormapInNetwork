@@ -4,7 +4,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
     const colorMap = Constant.colorMaps[colorMapName];
 
     const rotate = Math.random() * 360;
-    const scale = 1;
+    const scale = (dataName === 'jazz') ? 0.85 : 1;
     const reflectX = Math.random() > 0.5 ? -1 : 1;
     const reflectY = Math.random() > 0.5 ? -1 : 1;
 
