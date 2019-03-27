@@ -214,3 +214,9 @@ text {
     right: 50px;
     bottom: 50px;
 }
+
+.thankyou {
+    font-size: 42px;
+    text-align: center;
+    margin-top: 15%;
+}

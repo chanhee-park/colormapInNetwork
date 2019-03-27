@@ -26,7 +26,7 @@
         <div class="content">
             <div class="content-html" v-html="pageInfo.contentHTML"></div>
         </div>
-        <div class="button next-page-button fix" v-on:click="nextPage">NEXT</div>
+        <div class="button next-page-button fix" v-if="pageInfo.type !== 'save'" v-on:click="nextPage">NEXT</div>
     </div>
 </div>
 <script src="javascripts/index.js"></script>
