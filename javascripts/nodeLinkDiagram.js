@@ -3,10 +3,10 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
     const graph = Data.getData(dataName);
     const colorMap = Constant.colorMaps[colorMapName];
 
-    const rotate = Math.random() * 360;
-    const scale = (dataName === 'jazz') ? 0.65 : 1;
-    const reflectX = Math.random() > 0.5 ? -1 : 1;
-    const reflectY = Math.random() > 0.5 ? -1 : 1;
+    let rotate = Math.random() * 360;
+    let scale = 1;
+    let moveX = (dataName === 'jazz') ? -25 : 0;
+    let moveY = (dataName === 'jazz') ? -50 : 0;
 
     isHighestValue = (isHighestValue === undefined) ? true : isHighestValue;
 
@@ -129,6 +129,7 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
                 })
                 .classed('node', true)
                 .on('click', function () {
+                    console.log(node);
                     checkAnswerResult(node);
                 })
         });
@@ -159,10 +160,10 @@ function drawGraph(dataName, refCentrality, colorMapName, isTutorial, taskNum, i
 
     function transformDiagram() {
         d3.selectAll('circle')
-            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) scale(${scale}, ${scale}) translate(${moveX}, ${moveY})`);
 
         d3.selectAll('line')
-            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) translate(${reflectX * scale}, ${reflectY * scale})`);
+            .attr('transform', `rotate(${rotate}, ${svgWidth / 2}, ${svgHeight / 2}) scale(${scale}, ${scale}) translate(${moveX}, ${moveY})`);
     }
 
     /**
