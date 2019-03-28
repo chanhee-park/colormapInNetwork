@@ -7,13 +7,13 @@ const pages = [
     <div class="description">
         Todays user study is about “Colormaps in Network Visualization/Graph” (Node link diagram). This is a research study.
         We want to understand how to best show network data with respect to color scales/schemes used for representing the nodes.
-        This experiment involves 96 tasks. The estimated time for this experiment is about 20 minutes.
+        This experiment involves 36 tasks. The estimated time for this experiment is about 10 minutes.
         We will present some visualizations (node link diagram) of different data sets with links between those nodes.
     </div>
     <div class="description">
     오늘의 사용자 연구는 "네트워크 시각화/그래프에서 컬러맵별 사용성 평가"에 관한 것입니다. 
     이 실험은 네트워크 데이터를 가장 잘 표시하는 색상 척도가 무엇인지를 알아내고자 설계되었습니다.
-    이 실험은 96개의 작업을 포함합니다. 이 실험의 예상 소요 시간은 20분 내외 입니다. 
+    이 실험은 36개의 작업을 포함합니다. 이 실험의 예상 소요 시간은 10분 내외 입니다. 
     우선, 네트워크 시각화가 무엇인지 설명하기 위해 여러 데이터 세트에 대한 몇 가지 노드 링크 다이어그램을 보여 드리겠습니다.
     </div>
     <br>

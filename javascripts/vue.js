@@ -2,8 +2,8 @@ const app = new Vue({
     el: '#app',
     data: {
         loginButtonLocked: false,
-        isSigned: false,
         isTaskComplete: false,
+        isSigned: false,
         user: {
             uid: undefined,
             uname: undefined,
@@ -21,21 +21,13 @@ const app = new Vue({
     methods: {
         login: () => {
             console.log('Login button is clicked.');
-            const inputName = $('input#input-name').val();
-            const isNameable = !_.isUndefined(inputName) || inputName.length >= 1;
-            if (this.loginButtonLocked) {
-                console.log('Login button is locked.');
-            } else if (!isNameable) {
-                console.log('There are not user name in input area.');
-                alert("Enter Your Name.");
-            } else {
-                this.loginButtonLocked = true;
-                loginModule.login();
-            }
+            loginModule.login();
         },
-        setUserInfo: (id, name) => {
+        setUserInfo: (id, name, age, gender) => {
             app.$data.user.uid = id;
             app.$data.user.uname = name;
+            app.$data.user.age = age;
+            app.$data.user.gender = gender;
             app.$data.user.loginTime = Date.now();
             app.$data.isSigned = true;
         },
@@ -54,6 +46,10 @@ const app = new Vue({
             app.changePage();
         },
         nextPage: () => {
+            if (app.$data.pageNum === 0 && !app.$data.isSigned) {
+                alert("Please Sign In.");
+                return;
+            }
             if ((app.$data.pageInfo.type === 'task0' || app.$data.pageInfo.type === 'task1' || app.$data.pageInfo.type === 'task2') && app.$data.isTaskComplete === false) {
                 alert("Please Answer The Question.");
                 return;
@@ -158,8 +154,7 @@ const app = new Vue({
             app.nextPage();
         },
         task: (data, centrality, colormap, isTutorial, taskNum, isHighValue) => {
-            app.$data.isTaskComplete = false
-            ;
+            app.$data.isTaskComplete = false;
             $('svg#network').empty();
             $('div.render-area').prepend('<div class="button start-button">Start</div>');
             setTimeout(function () {

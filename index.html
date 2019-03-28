@@ -18,7 +18,9 @@
     <div class="login-zone">
         <div class="login info" v-if="isSigned">Hi {{ user.uname }}. Your id is {{ user.uid }}.</div>
         <div class="login info" v-else="v-else">Login is required.</div>
-        <input class="login" id="input-name" v-if="! isSigned" placeholder="Enter your name."/>
+        <input class="login" id="input-name" v-if="! isSigned" placeholder="Name / 이름 (English)"/>
+        <input class="login" id="input-age" v-if="! isSigned" placeholder="Age / 만나이"/>
+        <input class="login" id="input-gender" v-if="! isSigned" placeholder="gender / 성별"/>
         <div class="login login-button" id="login-button" v-if="! isSigned" v-on:click="login">login</div>
     </div>
     <div class="test-zone">
