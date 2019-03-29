@@ -2,6 +2,8 @@ function writeUserTestData(user) {
     console.log(user);
     database.ref('userTest/' + user.uid).set({
         username: user.uname,
+        age : user.age,
+        gender : user.gender,
         login_time: user.loginTime,
         color_blindness: user.test.color_blind,
         tutorial: user.test.tutorial_test,
@@ -58,6 +60,8 @@ function saveCSV2() {
                     'uid': uid,
                     'color_blindness': r['color_blindness'],
                     'username': r['username'],
+                    'age': r['age'],
+                    'gender': r['gender'],
                     'test': {},
                 };
 
@@ -101,7 +105,7 @@ function saveCSV2() {
 
         const retArr = [];
         const colName = [
-            'user_id', 'username', 'color_blindness', 'data', 'task',
+            'user_id', 'username', 'age', 'gender', 'color_blindness', 'data', 'task',
             'single_blue_c', 'single_blue_t',
             'rainbow_c', 'rainbow_t',
             'divergent_red_blue_c', 'divergent_red_blue_t',
@@ -115,16 +119,19 @@ function saveCSV2() {
                     const row = _.fill(new Array(colName.length), undefined);
                     row[0] = o.uid;
                     row[1] = o.username;
-                    row[2] = o.color_blindness;
+                    row[2] = o.age;
+                    row[3] = o.gender;
+                    row[4] = o.color_blindness;
+
                     const dataname = taskName.split('_')[0];
                     const centrality = taskName.split('_')[1];
-                    row[3] = dataname;
-                    row[4] = centrality;
+                    row[5] = dataname;
+                    row[6] = centrality;
                     _.forEach(t, (task) => {
                         const colorMapName = task.colormap;
                         const colorMapIdx = colorMapNames.indexOf(colorMapName);
                         if (colorMapIdx >= 0) {
-                            const dataIdx = 5 + colorMapIdx * 2;
+                            const dataIdx = 7 + colorMapIdx * 2;
                             row[dataIdx] = task.correctness;
                             row[dataIdx + 1] = task.time;
                         }
